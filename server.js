@@ -1,11 +1,6 @@
-const express = require('express')
+const request = require('request')
+const generator = require('./handlers/transaction_generator.js')
 
-let app = express();
-
-app.get('/', (req,res,next) => {
-    res.send("Hello there")
-})
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log("App is listening");  
-})
+setInterval(function () {
+    console.log(generator())
+},1000)
