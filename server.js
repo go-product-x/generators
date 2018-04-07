@@ -1,11 +1,14 @@
-const request = require('request')
+const axios = require('axios')
 const generator = require('./handlers/transaction_generator.js')
 
 setInterval(function () {
-    //console.log(generator())
-    request('https://x-transaction-handler.herokuapp.com/', (error, response, body) => {
-        console.log('error:', error);
-        console.log('statusCode:', response && response.statusCode);
-        console.log('body:', body);
-    })
+    axios.post('https://x-transaction-handler.herokuapp.com//transaction', {
+        value: generator()
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 }, 3000)
