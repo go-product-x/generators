@@ -1,9 +1,10 @@
+require('dotenv').config()
 const axios = require('axios')
-const generator = require('./handlers/transaction_generator.js')
+const transactionGenerator = require('./handlers/transaction_generator.js')
 
 setInterval(function () {
-    axios.post('https://x-transaction-handler.herokuapp.com/transaction', {
-        value: generator()
+    axios.post(process.env.TRANSACTION_URL, {
+        data: transactionGenerator()
       })
       .then(function (response) {
         console.log(response);
@@ -11,4 +12,4 @@ setInterval(function () {
       .catch(function (error) {
         console.log(error);
       });
-}, 3000)
+}, 2000)
