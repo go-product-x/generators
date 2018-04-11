@@ -1,4 +1,4 @@
-require('dotenv').config()
+//require('dotenv').config() // Uncomment for use in local environment
 const axios = require('axios')
 const transactionGenerator = require('./handlers/transaction_generator.js')
 
